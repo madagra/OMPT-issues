@@ -1,0 +1,4 @@
+Invalid task_data pointer near the end of the execution
+
+When calling the `ompt_get_task_info` routine from the OMPT interface near the end of the program execution to get information on the current task, the `task_data` parameter returned by this routine is freed by the OpenMP runtime before the end of the execution of OMPT callbacks and thus becomes invalid. 
+This results in a segmentation fault when trying to access the `task_data` structure within the event callbacks. This issue has been found in both `idle` and `sync_region_wait` callbacks. A reproducer of this issue can be found [here](https://github.com/madagra/OMPT-issues).
