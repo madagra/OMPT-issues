@@ -7,7 +7,7 @@ CFLAGS=-Wall -D_GNU_SOURCE -O3 -std=c99 -fopenmp
 default: main 
 
 main: 
-	${CC} ${CFLAGS} -L${INSTALL_PREFIX}/lib -o main.x main.c
+	${CC} ${CFLAGS} -L${INSTALL_PREFIX}/lib -o test.x test.c
 
 clean:
 	rm -f *.o *.so 

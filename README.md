@@ -1,11 +1,6 @@
-# OMPT-task_info
-This test program is intended as reproducer for an issue in OMP Tools (OMPT) interface.
-An incorrect value in the `value` field of `task_data` structure is obtained when reading the task associated data within an event callback. Issue details 
-can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp/issues/39).
+# OMPT-issues
+This repository contains several test programs which aim at reproducing issues in the OMP Tools (OMPT) interface. Instructions for executing the
+reproducers are contained in each subfolder.
 ### Requirements
 * gcc compiler
 * LLVM-openmp runtime with OMPT interface (code can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp)) present in the `LD_LIBRARY_PATH`
-### Usage
-Run as follows
-* `make`
-* `env OMP_THREADS_NUM = 4 ./main.x`
