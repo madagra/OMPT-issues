@@ -1,4 +1,4 @@
-# Unexepcted value of task structure value 
+# Unexepcted value of task structure data 
 An incorrect value in the `value` field of `task_data` structure is obtained when reading the task associated data within an event callback. Issue details 
 can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp/issues/39).
 ### Requirements
