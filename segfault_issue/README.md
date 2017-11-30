@@ -7,7 +7,7 @@ interface near the end of the program execution to get informations, the
 before the end of the execution of OMPT callbacks and becomes invalid, causing
 segfaults in callbacks when attempting to access it.  These test programs
 reproduces the segfault for `sync_region_wait` and `idle` events. Issue details
-can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp/issues/39).
+can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp/issues/41).
 ### Requirements
 * gcc compiler
 * LLVM-openmp runtime with OMPT interface (code can be found [here](https://github.com/OpenMPToolsInterface/LLVM-openmp)) present in the `LD_LIBRARY_PATH`
