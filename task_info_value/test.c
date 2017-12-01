@@ -34,27 +34,36 @@ static void my_ompt_callback_sync_region_wait(
             const void *ret_addr)
 {
 
-
     ompt_data_t  *task_data_read, *parallel_data_read;
     ompt_frame_t *task_frame;
     int task_exist = ompt_get_task_info_fn(0,NULL,
             &task_data_read,&task_frame,
             &parallel_data_read,NULL);
 
+    if (task_exist == 0) {
+        task_data_read = malloc(sizeof(ompt_data_t));
+        task_data_read->value = 0;
+    } 
+
     ompt_data_t *thread_data = ompt_get_thread_data_fn();
+    int num_thread = omp_get_thread_num();
     switch(state)
     {
         case(ompt_scope_begin):
             task_data->value = ompt_get_unique_id_fn() + (uint64_t) thread_data;
-            printf("[thread %p] sync region start: task %ld [%ld]\n",thread_data,
+            printf("[thread %d] sync region start: task %ld [%ld]\n",num_thread,
                    task_data->value,task_data_read->value);            
             break;
         case(ompt_scope_end):
             // here sometimes `task_data->value = 0` whereas `task_data_read->value = id`
             // as expected
-            printf("[thread %p] sync region end: task %ld [%ld]\n",thread_data,
+            printf("[thread %d] sync region end: task %ld [%ld]\n",num_thread,
                    task_data->value,task_data_read->value);            
             break;
+    }
+
+    if(task_exist == 0) {
+        free(task_data_read);
     }
 }
 
