@@ -10,4 +10,4 @@ regions seems to be recorded inside a `sync_region_wait` event instead of an
 ### Usage
 Run as follows
 * `make`
-* `env OMP_THREADS_NUM = 4 ./main.x`
+* `env OMP_THREADS_NUM = 4 ./test.x`
